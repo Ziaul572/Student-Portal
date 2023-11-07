@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Course</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link href="static/css/styles.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="f_banner">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+      <div class="dropdown">
+        <button class="dropbtn" id="profile">{{ session['name'] }}</button>
+        <div class="dropdown-content">
+          <a href="#">Edit Profile</a>
+          <a href="#">Change Password</a>
+          <a href="./">Logout</a>
+        </div>
+        </div>
+  
+      <h1>Welcome to EWU Faculty Portal</h1>
+      <p>Here you can check your results, take courses and view university guidelines.</p>
+    </div>
+  
+    <div class="sidebar" id="mySidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <img class="sidebar-img" src="/static/ewu_logo.svg" alt="logo">
+      <a href="#"><img class="side-img" src="/static/user.png">Profile</a>
+      <a href="#"><img class="side-img" src="/static/exam.png">Grade Submit</a>
+      <a href="#"><img class="side-img" src="/static/schedule.png">Class Schedule</a>
+      <a href="./addCourse"><img class="side-img" src="/static/graduation-hat.png">Add Course</a>
+      <a href="#"><img class="side-img" src="/static/online-course.png">Offered Course</a>
+      <a href="#"><img class="side-img" src="/static/trash-can.png">Semester Drop</a>
+      <a href="#"><img class="side-img" src="/static/homework.png">Curriculum</a>
+    </div>
+  
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Faculty Portal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Add Course</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">View Courses</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container mt-5" style="padding-bottom: 5%; padding-top: 1%;">
+      <h1>Add Course</h1>
+      <form method="POST" action="/addCourse">
+        <div class="form-group">
+          <label for="course_code">Course Code</label>
+          <input type="text" class="form-control" id="course_code" name="course_code" placeholder="Enter course code">
+        </div>
+        <div class="form-group">
+          <label for="course_name">Course Name</label>
+          <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Enter course name">
+        </div>
+        <div class="form-group">
+          <label for="course_description">Course Description</label>
+          <textarea class="form-control" id="course_description" name="course_description" rows="3" placeholder="Enter course description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="course_seat">Course Seat number</label>
+            <select class="form-control" name="course_seat" id="course_seat">
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option name = "s40" value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="course_credit">Course Credit</label>
+          <select class="form-control" id="course_credit" name="course_credit">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option name = "v4" value="4">4</option>
+          </select>
+        </div>
+        <button type="submit" name="btn" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- Include Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSliXT" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>EWU Portal</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background: linear-gradient(to left, #ebf4f5, #b5c6e0);
+        }
+        .banner {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to right, #2c6cbc, #71c3f7, #f6f6f6);
+    width: 100%;
+    color: white;
+    padding: 15px;
+    text-align: center;
+        }
+
+  .card{
+    width: 20%;
+
+    background-color: #b6deff;
+    border-radius: 7%;
+
+  }
+  .card-deck{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+  }
+  .card-body{
+    position: relative;
+    max-width:250px;
+
+	margin-top:0px;
+	transition:.3s;
+	-webkit-transition:.3s;
+    text-align: center;
+
+  }
+  .card a:hover{
+    color: #ffffff;
+    background: linear-gradient(#2278fb, #6bdfdb);
+    border-radius: 7%;
+  }
+
+
+    </style>
+  </head>
+  <body>
+
+        <div class="admin">
+            <div class="banner">
+                <button class="openbtn" id = "navbar" onclick="openNav()">&#9776;</button>
+                <div class="dropdown">
+                    <button class="dropbtn" id="profile">{{ session['name'] }}</button>
+                    <div class="dropdown-content">
+                      <a href="#">Edit Profile</a>
+                      <a href="#">Change Password</a>
+                      <a id="Logout" href="./">Logout</a>
+                    </div>
+                  </div>
+                
+                <h1>Welcome to EWU Student Portal</h1>
+                <p>Here you can check your results, take courses and view university guidelines.</p>
+            </div>
+
+            <div class="sidebar" id="mySidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <img class="sidebar-img" src="/static/ewu_logo.svg" alt="logo">
+                <a href="#"><img class="side-img" src="/static/user.png">Profile</a>
+                <a href="#"><img class="side-img" src="/static/exam.png">Grade Report</a>
+                <a href="#"><img class="side-img" src="/static/schedule.png">Class Schedule</a>
+                <a href="#"><img class="side-img" src="/static/graduation-hat.png">Advising</a>
+                <a href="#"><img class="side-img" src="/static/online-course.png">Offered Course</a>
+                <a href="#"><img class="side-img" src="/static/trash-can.png">Semester Drop</a>
+                <a href="#"><img class="side-img" src="/static/homework.png">Curriculum</a>
+            </div>
+            <h1 style="text-align: center;margin-top: 2%; color: #2c6cbc;">Admin</h1>
+
+            <div class="card-deck">
+                <div class="card" >
+                    <a id = "facSignUp" href="./facultySignUp">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Faculty</h4>
+                        <p class="card-text">Sign Up</p>
+                    </div>
+                </a>
+                </div>
+                <div class="card">
+                    <a id = "stuSignUp" href="./signUp">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    
+                    <div class="card-body">
+                        <h4 class="card-title">Student</h4>
+                        <p class="card-text">Sign Up</p>
+                        
+                    </div></a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Course</h4>
+                        <p class="card-text">List</p>
+                    </div></a>
+                </div>
+                <div class="card">
+                    <a href="#">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Student</h4>
+                        <p class="card-text">Database</p>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+    
+            function closeNav() {
+                document.getElementById("mySidebar").style.width = "0";
+                document.getElementById("main").style.marginLeft= "0";
+            }
+        </script>
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

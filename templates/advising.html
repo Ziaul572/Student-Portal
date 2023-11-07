@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Advising</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      function storeData(column1, column2, column3, column4) {
+        // Send the AJAX request
+        console.log(column1);
+        console.log(column2);
+        console.log(column3);
+        console.log(column4);
+        $.ajax({
+          url: "/store_data",
+          type: "POST",
+          data: JSON.stringify({
+            column1: column1,
+            column2: column2,
+            column3: column3,
+            column4: column4,
+          }),
+
+          contentType: "application/json",
+          success: function (response) {
+            alert("Data stored successfully!");
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
+    </script>
+  </head>
+  <body>
+
+      <div class="banner">
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <div class="dropdown">
+          <button class="dropbtn" id="profile">{{ session['name'] }}</button>
+          <div class="dropdown-content">
+            <a href="#">Edit Profile</a>
+            <a href="#">Change Password</a>
+            <a href="./">Logout</a>
+          </div>
+        </div>
+
+        <h1>Welcome to EWU Student Portal</h1>
+        <p>
+          Here you can check your results, take courses and view university
+          guidelines.
+        </p>
+      </div>
+      <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img class="sidebar-img" src="/static/ewu_logo.svg" alt="logo">
+        <a href="#"><img class="side-img" src="/static/user.png">Profile</a>
+        <a href="#"><img class="side-img" src="/static/exam.png">Grade Report</a>
+        <a href="#"><img class="side-img" src="/static/schedule.png">Class Schedule</a>
+        <a href="./advising"><img class="side-img" src="/static/graduation-hat.png">Advising</a>
+        <a href="#"><img class="side-img" src="/static/online-course.png">Offered Course</a>
+        <a href="#"><img class="side-img" src="/static/trash-can.png">Semester Drop</a>
+        <a href="#"><img class="side-img" src="/static/homework.png">Curriculum</a>
+      </div>
+      <script>
+        function openNav() {
+          document.getElementById("mySidebar").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+          document.getElementById("main").style.marginLeft = "0";
+        }
+      </script>
+      <div class="container">
+        <div class="containerAdvise" >
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Credit</th>
+                <th>Seat Available</th>
+                <th>Faculty</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div class="form-control">
+                <h5 style="text-align: center;">Course List</h5>
+                {% for document in table_data %}
+                <form method="POST" action="/advising">
+
+                  <tr>
+                    <td>
+                      <div>
+                        <input
+                          size="3"
+                          class="form-group"
+                          type="text"
+                          name="course-code-{{ document.id }}"
+                          id="course-code-{{ document.id }}"
+                          value="{{ document['Course Code'] }}"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          size="25"
+                          class="form-group"
+                          type="text"
+                          name="course-name-{{ document.id }}"
+                          id="course-name-{{ document.id }}"
+                          value="{{ document['Course Name'] }}"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          size="2"
+                          class="form-group"
+                          type="text"
+                          name="course-credit-{{ document.id }}"
+                          id="course-credit-{{ document.id }}"
+                          value="{{ document['Course Credit'] }}"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          size="2"
+                          class="form-group"
+                          type="text"
+                          name="course-seat-{{ document.id }}"
+                          id="course-seat-{{ document.id }}"
+                          value="{{ document['Course Seat'] }}"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          size="10"
+                          class="form-group"
+                          type="text"
+                          name="added-by-{{ document.id }}"
+                          id="added-by-{{ document.id }}"
+                          value="{{ document['Added by'] }}"
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <input
+                          class="form-group , button"
+                          type="submit"
+                          name="submit-row"
+                          value="Save"
+                        />
+                        <input
+                          type="hidden"
+                          name="document-id"
+                          value="{{ document.id }}"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+
+                </form>
+                {% endfor %}
+              </div>
+            </tbody>
+          </table>
+        </div>
+        <div class="courseAdded">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Credit</th>
+                <th>Faculty</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <div class="form-control">
+                <h5 style="text-align: center;">Course Taken</h5>
+                {% for document in course_taken %}
+<form method="POST" action="/advising">
+  <tr>
+    <td>
+      <div>
+        <input
+          size="3"
+          class="form-group"
+          type="text"
+          name="course-taken-code-{{ document.id }}"
+          id="course-taken-code-{{ document.id }}"
+          value="{{ document['Course Code'] }}"
+        />
+      </div>
+    </td>
+    <td>
+      <div>
+        <input
+          size="2"
+          class="form-group"
+          type="text"
+          name="course-taken-credit-{{ document.id }}"
+          id="course-taken-credit-{{ document.id }}"
+          value="{{ document['Course Credit'] }}"
+        />
+      </div>
+    </td>
+    <td>
+      <div>
+        <input
+          size="6"
+          class="form-group"
+          type="text"
+          name="added-taken-by-{{ document.id }}"
+          id="added-taken-by-{{ document.id }}"
+          value="{{ document['Faculty'] }}"
+        />
+      </div>
+    </td>
+    <td>
+      <div>
+        <input
+          class="form-group , button"
+          type="submit"
+          name="drop-row"
+          value="Drop"
+        />
+        <input
+          type="hidden"
+          name="document-id"
+          value="{{ document.id }}"
+        />
+      </div>
+    </td>
+  </tr>
+</form>
+{% endfor %}
+    
+              </div>
+            </tbody>
+          </table>
+          <a name="print" id="print" class="btn btn-primary" href="./homepage" role="button" style="float: right; margin-right: 10%;">Print</a>
+        </div>
+      </div>
+    
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!-- Include Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSliXT"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

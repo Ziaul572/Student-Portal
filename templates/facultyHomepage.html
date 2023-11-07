@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<title>EWU Faculty Portal</title>
+	<link href="static/css/styles.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	
+	<div class="f_banner">
+		<button class="openbtn" id = "navbar" onclick="openNav()">&#9776;</button>
+		<div class="dropdown">
+			<button class="dropbtn" id="profile">{{ session['name'] }}</button>
+			<div class="dropdown-content">
+			  <a href="#">Edit Profile</a>
+			  <a href="#">Change Password</a>
+			  <a href="./">Logout</a>
+			</div>
+		  </div>
+
+		<h1>Welcome to EWU Faculty Portal</h1>
+		<p>Here you can check your results, take courses and view university guidelines.</p>
+	</div>
+
+	<div class="sidebar" id="mySidebar">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<img class="sidebar-img" src="/static/ewu_logo.svg" alt="logo">
+		<a href="#"><img class="side-img" src="/static/user.png">Profile</a>
+		<a href="#"><img class="side-img" src="/static/exam.png">Grade Submit</a>
+		<a href="#"><img class="side-img" src="/static/schedule.png">Class Schedule</a>
+		<a id = "addCourse" href="./addCourse"><img class="side-img" src="/static/graduation-hat.png">Add Course</a>
+		<a href="#"><img class="side-img" src="/static/online-course.png">Offered Course</a>
+		<a href="#"><img class="side-img" src="/static/trash-can.png">Semester Drop</a>
+		<a href="#"><img class="side-img" src="/static/homework.png">Curriculum</a>
+	</div>
+
+	<div id="main">
+
+		<h2>Welcome to EWU Faculty Portal</h2>
+		<p>Here you can check your students, add courses and view university guidelines.</p>
+	</div>
+
+	<script>
+		function openNav() {
+			document.getElementById("mySidebar").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidebar").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+		}
+	</script>
+	
+	<!-- Include Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNSliXT" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  color: #23336a;
+}
+
+body {
+  background: #7f7fd5;
+  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+  background: linear-gradient(to left, #91eae4, #86a8e7, #7f7fd5);
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.box {
+  background: #f2f2f2;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.banner img {
+  width: 160px;
+  display: block;
+  margin: 0 auto;
+}
+
+.banner h2 {
+  width: 280px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.bbb {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #23336a;
+}
+
+.input-field {
+  padding: 10px 0;
+  border-bottom: 2px solid #23336a;
+}
+
+.input-field i {
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.input-field input {
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.input-field input:focus {
+  outline: none;
+}
+
+.submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit input {
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 180px;
+  margin: 25px 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: #f2f2f2;
+  background: #23336a;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #23336a;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  color: #23336a;
+  background: #f2f2f2;
+}
+
+.link {
+  margin: 20px 0;
+}
+
+.link a {
+  text-decoration: none;
+  border: 2px solid #23336a;
+  padding: 10px 30px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.link a:hover {
+  color: #f2f2f2;
+  background: #23336a;
+}
+
+.footer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer i {
+  color: #23336a;
+  font-size: 18px;
+  margin: 0 5px;
+  border: 2px solid #23336a;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.footer i:hover {
+  color: #f2f2f2;
+  background: #23336a;
+}
+
+@media only screen and (min-width: 560px) {
+  .box {
+    width: 480px;
+  }
+}

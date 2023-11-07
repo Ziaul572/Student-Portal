@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <title>Student profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div class="banner">
+		<button class="openbtn" onclick="openNav()">&#9776;</button>
+		<div class="dropdown">
+			<button class="dropbtn" id="profile">{{ session['name'] }}</button>
+			<div class="dropdown-content">
+			  <a href="#">Edit Profile</a>
+			  <a href="#">Change Password</a>
+			  <a href="./">Logout</a>
+			</div>
+		  </div>
+		
+		<h1>Student</h1>
+		<p>Profile</p>
+	</div>
+
+	<div class="sidebar" id="mySidebar">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<img class="sidebar-img" src="/static/ewu_logo.svg" alt="logo">
+		<a href="#"><img class="side-img" src="/static/user.png">Profile</a>
+		<a href="#"><img class="side-img" src="/static/exam.png">Grade Report</a>
+		<a href="#"><img class="side-img" src="/static/schedule.png">Class Schedule</a>
+		<a href="./advising"><img class="side-img" src="/static/graduation-hat.png">Advising</a>
+		<a href="#"><img class="side-img" src="/static/online-course.png">Offered Course</a>
+		<a href="#"><img class="side-img" src="/static/trash-can.png">Semester Drop</a>
+		<a href="#"><img class="side-img" src="/static/homework.png">Curriculum</a>
+	</div>
+	
+
+	<script>
+		function openNav() {
+			document.getElementById("mySidebar").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidebar").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+		}
+	</script>
+    <div class="container" id="profilePage">
+        <h3 style="text-align: center;">{{ session['name'] }}'s Profile</h3><hr>
+        <div class="container">
+            <table class="table">
+                
+                <tbody>
+                {% for document in table_data %}
+                    <tr>
+                      
+                      <td >Name:</td>
+                      <td colspan="2">{{ document['name'] }}</td>
+                      <td rowspan="3" ><img src="img/test.png"></td>
+                    </tr>
+                    <tr>
+                      
+                        <td >Student ID:</td>
+                        <td colspan="2">{{ document['student_id'] }} </td>
+                        
+                      </tr>
+                    <tr>
+                      
+                      <td >Email:</td>
+                      <td>{{ document['email'] }}</td>
+                      
+                    </tr>
+                    <tr>
+                      
+                      <td >Phone:</td>
+                      <td colspan="2">{{ document['phone'] }}</td>
+                    
+                    </tr>
+                    <tr>
+
+                        <td>Department:</td>
+                        <td colspan="3">{{ document['department'] }}</td>
+                        
+                      </tr>
+                      <tr>
+                      
+                        <td>Date of Birth:</td>
+                        <td colspan="3">{{ document['date of birth'] }}</td>
+                        
+                      </tr>
+                      <tr>
+                      
+                        <td>Address:</td>
+                        <td colspan="3"><address>{{ document['address'] }}</address></td>
+                        
+                      </tr>
+                      <tr>
+                      
+                        <td>CGPA:</td>
+                        <td colspan="3">{{ document['cgpa'] }}</td>
+                        
+                      </tr>
+                {% endfor %}
+                  </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>

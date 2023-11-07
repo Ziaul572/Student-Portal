@@ -1,0 +1,5 @@
+Name, Age, Department, University
+John, 23, CSE, University of ABC
+Bob, 24, MBA, University of XYZ
+Alice, 25, CSE, University of ABC
+Kevin, 26, MBA, University of XYZ

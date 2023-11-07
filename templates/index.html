@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EWU</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginStyles.css') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="box">
+      <div class="banner">
+        <a href="./index.html"><img src="/static/ewu_logo.svg" alt="ewu_logo" /></a>
+        <h2 class="bbb">East West University Portal</h2>
+      </div>
+
+      <div class="submit">
+        <form method="post" action="/">
+        <a href="./student-login.html">
+          <button type="submit" name="submit-stu" class="btn">Students Login</button>
+        </a>
+        <a href="./admin-login.html">
+          <button type="submit" name="submit-adm" class="btn">Admin Login</button>
+        </a>
+        <a href="./faculty-login.html">
+          <button type="submit" name="submit-fac" class="btn">Faculty Login</button>
+        </a>
+          </form>
+      </div>
+    </div>
+  </body>
+</html>
